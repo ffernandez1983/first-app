@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { Component }                from '@angular/core';
+import { Hero }                     from './hero';
+import { HeroService }              from './hero.service';
 import { Location }                 from '@angular/common';
-import { Router } from '@angular/router';
-import { OnInit } from '@angular/core';
+import { Router }                   from '@angular/router';
+import { OnInit }                   from '@angular/core';
 
 
 
@@ -37,5 +37,22 @@ export class HeroesComponent implements OnInit {
     let link = ['/detail', hero.id];
     this.router.navigate(link);
   }
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.create(name)
+      .then(hero => {
+        this.heroes.push(hero);
+        this.selectedHero = null;
+      });
+  }
+  delete(hero: Hero): void {
+  this.heroService
+      .delete(hero.id)
+      .then(() => {
+        this.heroes = this.heroes.filter(h => h !== hero);
+        if (this.selectedHero === hero) { this.selectedHero = null; }
+      });
+}
 }
 

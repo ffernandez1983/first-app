@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   moduleId: module.id,
   selector: 'my-dashboard',
   templateUrl: '/app/dashboard/dashboard.component.html',
-  styleUrls:  ['/app/dashboard/dashboard.component.css'] 
+  styleUrls:  [ '/app/dashboard/dashboard.component.css' ] 
 })
 export class DashboardComponent implements OnInit {
 
@@ -22,6 +22,9 @@ export class DashboardComponent implements OnInit {
       .then(heroes => this.heroes = heroes.slice(1, 5));
   }
 
-  gotoDetail(hero: Hero): void { /* not implemented yet */}
+  gotoDetail(hero: Hero): void {
+    let link = ['/detail', hero.id];
+    this.router.navigate(link);
+  }
   
 }
