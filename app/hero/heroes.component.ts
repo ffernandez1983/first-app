@@ -10,14 +10,12 @@ import { OnInit } from '@angular/core';
 @Component({
   providers: [HeroService],
   selector: 'my-heroes',
-  templateUrl:'/app/heroes.component.html',
-  styleUrls: [ '/app/heroes.component.css' ]
+  templateUrl:'/app/hero/heroes.component.html',
+  styleUrls: [ '/app/hero/heroes.component.css' ]
 })
 
 
 export class HeroesComponent implements OnInit {
-  
-  title = 'Tour of Heroes';
   heroes: Hero[];
   selectedHero: Hero;
   
