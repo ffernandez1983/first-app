@@ -7,8 +7,8 @@ import { Hero } from '../hero/hero';
 @Component({
   moduleId: module.id,
   selector: 'hero-search',
-  templateUrl: 'hero-search.component.html',
-  styleUrls: [ 'hero-search.component.css' ],
+  templateUrl: '/app/hero-search/hero-search.component.html',
+  styleUrls: [ '/app/hero-search/hero-search.component.css' ],
   providers: [HeroSearchService]
 })
 export class HeroSearchComponent implements OnInit {
@@ -30,7 +30,7 @@ export class HeroSearchComponent implements OnInit {
         ? this.heroSearchService.search(term)
         // or the observable of empty heroes if no search term
         : Observable.of<Hero[]>([]))
-      .catch(error => {
+        .catch(error => {
         // TODO: real error handling
         console.log(error);
         return Observable.of<Hero[]>([]);
